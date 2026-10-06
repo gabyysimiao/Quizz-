@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Teen Wolf</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --vermelho: #c4161c;
+      --ouro: #e8c56b;
+      --claro: #f4f0e0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: "Inter", sans-serif;
+      color: var(--claro);
+      background:
+        radial-gradient(circle at 80% 8%, rgba(232,197,107,.16), transparent 28%),
+        radial-gradient(circle at 12% 88%, rgba(196,22,28,.18), transparent 32%),
+        linear-gradient(180deg, #05060a, #0b120e 55%, #050608);
+    }
+
+    .lua {
+      position: fixed;
+      top: 36px;
+      right: 54px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff7d6, #cbb56a 70%, #8a6a2a);
+      box-shadow: 0 0 40px 14px rgba(232,197,107,.28);
+      z-index: -1;
+    }
+
+    .caixa {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+
+    header { text-align: center; margin-bottom: 28px; }
+
+    .logo {
+      width: min(420px, 86vw);
+      filter: drop-shadow(0 8px 18px rgba(196,22,28,.45));
+    }
+
+    .subtitulo {
+      font-family: "Cinzel", serif;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      color: var(--ouro);
+      margin-top: 8px;
+    }
+
+    .card {
+      background: rgba(12,14,18,.78);
+      border: 1px solid rgba(232,197,107,.28);
+      border-radius: 22px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .selo {
+      display: inline-block;
+      margin-bottom: 10px;
+      background: rgba(0,0,0,.62);
+      color: var(--ouro);
+      font-family: "Cinzel", serif;
+      font-size: .72rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(232,197,107,.28);
+    }
+
+    h2 {
+      font-family: "Cinzel", serif;
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+    }
+
+    .opcoes { display: grid; gap: 10px; }
+
+    .opcao {
+      display: block;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 12px;
+      padding: 13px 14px;
+      cursor: pointer;
+    }
+
+    .opcao:hover { border-color: var(--ouro); }
+
+    input { position: absolute; opacity: 0; pointer-events: none; }
+
+    input:checked + .opcao {
+      border-color: #ff4d4d;
+      background: rgba(196,22,28,.22);
+    }
+
+    input.certa:checked + .opcao,
+    .pergunta:has(input:checked) input.certa + .opcao {
+      border-color: #46c070;
+      background: rgba(46,140,78,.22);
+    }
+
+    .aviso {
+      display: none;
+      margin-top: 12px;
+      color: #f0e4b4;
+    }
+
+    .pergunta:has(input:checked) .aviso { display: block; }
+
+    footer {
+      text-align: center;
+      margin-top: 8px;
+      color: #b7b0a0;
+      font-size: .82rem;
+    }
+
+    @media (max-width: 720px) {
+      .lua { width: 78px; height: 78px; top: 16px; right: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="lua"></div>
+  <div class="caixa">
+    <header>
+      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/2/26/Teen_Wolf_%282011_TV_series%29_logo_%282%29.svg" alt="Logo Teen Wolf" />
+      <p class="subtitulo">Beacon Hills • 10 perguntas</p>
+    </header>
+
+    <section class="card pergunta">
+      <span class="selo">ELENCO</span>
+      <h2>1. Em que ano estreiou Teen Wolf?</h2>
+      <div class="opcoes">
+        <input type="radio" name="q1" id="q1a" /><label class="opcao" for="q1a">2013</label>
+        <input class="certa" type="radio" name="q1" id="q1b" /><label class="opcao" for="q1b">2011</label>
+        <input type="radio" name="q1" id="q1c" /><label class="opcao" for="q1c">2015</label>
+        <input type="radio" name="q1" id="q1d" /><label class="opcao" for="q1d">2009</label>
+      </div>
+      <p class="aviso">Foi em 2011.</p>
+    </section>
+
+    <section class="card pergunta">
+      <span class="selo">CENÁRIO</span>
+      <h2>2. Em qual cidade se passa a série?</h2>
+      <div class="opcoes">
+        <input class="certa" type="radio" name="q2" id="q2a" /><label class="opcao" for="q2a">Beacon Hills</label>
+        <input type="radio" name="q2" id="q2b" /><label class="opcao" for="q2b">Sunnydale</label>
+        <input type="radio" name="q2" id="q2c" /><label class="opcao" for="q2c">Mystic Falls</label>
+        <input type="radio" name="q2" id="q2d" /><label class="opcao" for="q2d">Forks</label>
+      </div>
+      <p class="aviso">Beacon Hills é a cidade da série.</p>
+    </section>
+
+    <section class="card pergunta">
+      <span class="selo">1ª TEMPORADA</span>
+      <h2>3. Quem mordeu o Scott na 1ª temporada?</h2>
+      <div class="opcoes">
+        <input type="radio" name="q3" id="q3a" /><label class="opcao" for="q3a">Derek Hale</label>
+        <input type="radio" name="q3" id="q3b" /><label class="opcao" for="q3b">Deucalion</label>
+        <input class="certa" type="radio" name="q3" id="q3c" /><label class="opcao" for="q3c">Peter Hale</label>
+        <input type="radio" name="q3" id="q3d" /><label class="opcao" for="q3d">Kate Argent</label>
+      </div>
+      <p class="aviso">Peter Hale era o Alfa.</p>
+    </section>
+
+    <section class="card pergunta">
+      <span class="selo">MATILHA</span>
+      <h2>4. Quem é o melhor amigo do Scott?</h2>
+      <div class="opcoes">
+        <input type="radio" name="q4" id="q4a" /><label class="opcao" for="q4a">Liam Dunbar</label>
+        <input type="radio" name="q4" id="q4b" /><label class="opcao" for="q4b">Jackson Whittemore</label>
+        <input type="radio" name="q4" id="q4c" /><label class="opcao" for="q4c">Mason Hewitt</label>
+        <input class="certa" type="radio" name="q4" id="q4d" /><label class="opcao" for="q4d">Stiles Stilinski</label>
+      </div>
+      <p class="aviso">O Stiles é o melhor amigo do Scott.</p>
+    </section>
+
+    <section class="card pergunta">
+      <span class="selo">COLÉGIO</span>
+      <h2>5. Qual foi o personagem que se tornou vilão na 3 temporada?</h2>
+      <div class="opcoes">
+        <input type="radio" name="q5" id="q5a" /><label class="opcao" for="q5a">Isacc Lahey</label>
+        <input type="radio" name="q5" id="q5b" /><label class="opcao" for="q5b">Deucalion</label>
+        <input class="certa" type="radio" name="q5" id="q5c" /><label class="opcao" for="q5c">Stiles Stilinski</label>
+        <input type="radio" name="q5" id="q5d" /><label class="opcao" for="q5d">Ethan Steiner</label>
+      </div>
+      <p class="aviso">Foi o Stiles Stilinski.</p>
+    </section>
+
+    <section class="card pergunta">
+      <span class="selo">DETALHE</span>
+      <h2>6. Qual é a cor dos olhos de um lobsomen Alfha?</h2>
+      <div class="opcoes">
+        <input class="certa" type="radio" name="q6" id="q6a" /><label class="opcao" for="q6a">Vermelho</label>
+        <input type="radio" name="q6" id="q6b" /><label class="opcao" for="q6b">Verde</label>
+        <input type="radio" name="q6" id="q6c" /><label class="opcao" for="q6c">Amarelo</label>
+        <input type="radio" name="q6" id="q6d" /><label class="opcao" for="q6d">Azul.</label>
+      </div>
+      <p class="aviso">A cor dos olhos são Vermelhos.</p>
+    </section>
+
+    <section class="card pergunta">
+      <span class="selo">SOBRENATURAL</span>
+      <h2>7. Qual foi o vilão da 6 temporada de Teen Wolf?</h2>
+      <div class="opcoes">
+        <input type="radio" name="q7" id="q7a" /><label class="opcao" for="q7a">Nogitsune</label>
+        <input class="certa" type="radio" name="q7" id="q7b" /><label class="opcao" for="q7b">Cavaleiros Fantasmas</label>
+        <input type="radio" name="q7" id="q7c" /><label class="opcao" for="q7c">Darach</label>
+        <input type="radio" name="q7" id="q7d" /><label class="opcao" for="q7d">Kanima</label>
+      </div>
+      <p class="aviso">Foi os Cavaleiros Fantasmas.</p>
+    </section>
+
+    <section class="card pergunta">
+      <span class="selo">LORE</span>
+      <h2>8. Quem foi o Primeiro Beta do Scott McCall?</h2>
+      <div class="opcoes">
+        <input type="radio" name="q8" id="q8a" /><label class="opcao" for="q8a">Lydia Martin</label>
+        <input type="radio" name="q8" id="q8b" /><label class="opcao" for="q8b">Peter Hale</label>
+        <input class="certa" type="radio" name="q8" id="q8c" /><label class="opcao" for="q8c">Liam Dunbar</label>
+        <input type="radio" name="q8" id="q8d" /><label class="opcao" for="q8d">Stiles Stilinski</label>
+      </div>
+      <p class="aviso">Liam Dunbar foi o Primeiro beta de Scott McCall.</p>
+    </section>
+
+    <section class="card pergunta">
+      <span class="selo">SÉRIE</span>
+      <h2>9. Quantas temporadas tem em Teen Wolf?</h2>
+      <div class="opcoes">
+        <input type="radio" name="q9" id="q9a" /><label class="opcao" for="q9a">4</label>
+        <input type="radio" name="q9" id="q9b" /><label class="opcao" for="q9b">5</label>
+        <input class="certa" type="radio" name="q9" id="q9c" /><label class="opcao" for="q9c">6</label>
+        <input type="radio" name="q9" id="q9d" /><label class="opcao" for="q9d">8</label>
+      </div>
+      <p class="aviso">Foram 6 temporadas.</p>
+    </section>
+
+    <section class="card pergunta">
+      <span class="selo">FAMÍLIA HALE</span>
+      <h2>10. Qual é a criatura conhecido como Kanima na 2 temporada?</h2>
+      <div class="opcoes">
+        <input type="radio" name="q10" id="q10a" /><label class="opcao" for="q10a">Lydia Martin</label>
+        <input class="certa" type="radio" name="q10" id="q10b" /><label class="opcao" for="q10b">Jackson Whittemore</label>
+        <input type="radio" name="q10" id="q10c" /><label class="opcao" for="q10c">Allison Argent</label>
+        <input type="radio" name="q10" id="q10d" /><label class="opcao" for="q10d">Peter Hale</label>
+      </div>
+      <p class="aviso">É o jackson Whittemore.</p>
+    </section>
+
+    <footer>Quiz de Teen Wolf — só HTML e CSS.</footer>
+  </div>
+</body>
+</html>
